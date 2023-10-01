@@ -94,6 +94,5 @@ def reward_function(params):
     reward = reward_object.direction_reward(reward)
     reward = reward_object.distance_from_center_reward(reward)
 
-
     return float(reward)
     
