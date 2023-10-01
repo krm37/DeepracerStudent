@@ -68,14 +68,16 @@ class Reward:
         
     def cut_corner_reward(self,current_reward):
         marker=0.25*self.track_width
+        # when car turn right incentivizes to cut corner
         if self.steering<-18 and self.distance_from_center >marker:
             current_reward+=self.speed
+        # while car turn left incentivizes to close center
         elif self.steering>18 and self.distance_from_center <marker:
             current_reward+=self.speed        
         return current_reward
     
     def progress_reward(self,current_reward):
-        #EXPECTED TOTAL STEP 15 step p/s x 200 seconds
+        #EXPECTED TOTAL STEP 15 step p/s x 180 seconds
         TOTAL_NUM_STEPS = 2700
         
         if (self.steps % 10) == 0 and self.progress > (self.steps / TOTAL_NUM_STEPS)  :
@@ -91,8 +93,7 @@ def reward_function(params):
     reward = reward_object.cut_corner_reward(reward)
     reward = reward_object.direction_reward(reward)
     reward = reward_object.distance_from_center_reward(reward)
-    # reward*100 just intuition maybe gradient descent work better
-    reward*=100
+
 
     return float(reward)
     
