@@ -68,7 +68,7 @@ class Reward:
         
     def cut_corner_reward(self,current_reward):
         marker=0.25*self.track_width
-        # when car turn right incentivizes to cut corner
+        # while car turn right incentivizes to cut corner
         if self.steering<-18 and self.distance_from_center >marker:
             current_reward+=self.speed
         # while car turn left incentivizes to close center
