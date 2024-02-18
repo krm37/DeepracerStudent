@@ -1,2 +1,3 @@
-# deepracer-student-reward-function
- acceleration based reward function
+# deepracer-student-reward-functions
+
+This repository will be updated
